@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "fluentqa-spell"
+version = "0.1.0"
+description = ""
+authors = ["xx <fluentqa@xx.com>"]
+packages = [
+    { from = "src", include = "spell" }
+]
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^1.10.7"
+python-box = {extras = ["all"], version = "^7.0.1"}
+httpx = {extras = ["http2"], version = "^0.24.1"}
+#qpybase = { git = "https://github.com/fluent-qa/fluentqa-pybase.git", branch = "main" }
+qpydao = { git = "https://github.com/fluent-qa/fluentqa-pdao.git", branch = "main" }
+psycopg2-binary = "^2.9.6"
+pluggy = "^1.2.0"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.3.1"
+pytest-cov = "^4.0.0"
+requests = "^2.30.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

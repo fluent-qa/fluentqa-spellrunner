@@ -1,0 +1,8 @@
+DAO:
+  - https://github.com/nackjicholson/aiosql.git
+
+utils:
+  - https://github.com/Erotemic/ubelt
+
+plugin:
+  - https://github.com/mitsuhiko/pluginbase.git
