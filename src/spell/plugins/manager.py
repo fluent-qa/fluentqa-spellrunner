@@ -12,7 +12,7 @@ class SpellPluginManager:
         self.pm = pluggy.PluginManager(PLUGIN_NAMESPACE)
         self.pm.add_hookspecs(SpellPluginSpec)
 
-    def register_plugin_spec(self, spec_type: type[SpellPluginBaseSpec]):
+    def register_spec(self, spec_type: type[SpellPluginBaseSpec]):
         self.pm.add_hookspecs(spec_type)
         return self
 
@@ -24,4 +24,7 @@ class SpellPluginManager:
                                 module_name: str,
                                 hook_impl: type = SpellPluginImpl,
                                 hook_spec=None):
+        pass
+
+    def invoke_plugin(self):
         pass
