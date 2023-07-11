@@ -1,10 +1,10 @@
-from spell.plugins.manager import SpellPluginManager
-from spell.plugins.models import spell_hook_impl, SpellPluginImpl
+from spell.plugins import plugins_mgr
+from spell.plugins import spell_hook_impl, SpellPluginImpl
 
 
 class CustomPlugin(SpellPluginImpl):
     @spell_hook_impl
-    def pre_invoke(self,**input):
+    def pre_invoke(self, **input):
         print("pre invoke")
 
     @spell_hook_impl
@@ -17,7 +17,7 @@ class CustomPlugin(SpellPluginImpl):
 
 
 def test_load_plugin():
-    spm = SpellPluginManager()
+    spm = plugins_mgr
     spm.load_plugin(CustomPlugin())
     pm = spm.pm
     pm.hook.pre_invoke()

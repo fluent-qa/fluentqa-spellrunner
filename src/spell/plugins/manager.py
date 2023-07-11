@@ -2,9 +2,8 @@ from typing import Any
 
 import pluggy
 
-from spell.plugins.models import SpellPluginImpl, SpellPluginSpec
-
-PLUGIN_NAMESPACE = "spell-plugin"
+from spell.plugins import PLUGIN_NAMESPACE
+from spell.plugins.models import SpellPluginImpl, SpellPluginSpec, SpellPluginBaseSpec
 
 
 class SpellPluginManager:
@@ -12,6 +11,10 @@ class SpellPluginManager:
     def __init__(self):
         self.pm = pluggy.PluginManager(PLUGIN_NAMESPACE)
         self.pm.add_hookspecs(SpellPluginSpec)
+
+    def register_plugin_spec(self, spec_type: type[SpellPluginBaseSpec]):
+        self.pm.add_hookspecs(spec_type)
+        return self
 
     def load_plugin(self, plugin: Any):
         self.pm.register(plugin)
